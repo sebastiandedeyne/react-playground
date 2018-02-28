@@ -1,17 +1,25 @@
 import React from "react";
 
-export default class TodoInput extends React.Component {
-  constructor(props) {
+interface Props {
+  onAdd: (name: string) => void;
+}
+
+interface State {
+  value: string;
+}
+
+export default class TodoInput extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = { value: "" };
   }
 
-  handleChange(e) {
+  handleChange(e: HTMLElementEvent<HTMLInputElement>) {
     this.setState({ value: e.target.value });
   }
 
-  handleKeyDown(e) {
+  handleKeyDown(e: KeyboardEvent) {
     if (e.keyCode === 13) {
       this.props.onAdd(this.state.value);
       this.setState({ value: "" });

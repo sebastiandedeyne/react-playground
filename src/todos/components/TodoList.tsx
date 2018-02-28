@@ -1,6 +1,12 @@
 import React from "react";
+import { Todo } from "../store";
 
-const TodoList = ({ todos, onRemove }) => (
+interface Props {
+  todos: Todo[];
+  onRemove: (id: number) => void;
+}
+
+const TodoList = ({ todos, onRemove }: Props) => (
   <ul>
     {todos.map((todo, i) => (
       <li key={i} onClick={() => onRemove(todo.id)}>
